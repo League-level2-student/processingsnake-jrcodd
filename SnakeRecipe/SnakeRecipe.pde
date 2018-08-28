@@ -1,30 +1,44 @@
 
 // 1. Follow the recipe instructions inside the Segment class.
-
+//ok
 // The Segment class will be used to represent each part of the moving snake.
-
+import java.util.Random;
 class Segment {
 
   //2. Create x and y member variables to hold the location of each segment.
-
+int x = 250;
+int y = 250;
+boolean isEating = true;
   // 3. Add a constructor with parameters to initialize each variable.
-
+void segment(int x, int y){
+  x = 250;
+  y = 250;
+  
 
   // 4. Add getter and setter methods for both the x and y member variables.
 }
 
-
+int getX(){
+  return x;
+}
+int getY(){
+ return y; 
+}
+}
+void setX(int newX){
+  x = newX;
+}
 // 5. Create (but do not initialize) a Segment variable to hold the head of the Snake
-
+Segment s;
 
 
 // 6. Create and initialize a String to hold the direction of your snake e.g. "up"
-
+String direction = "up";
 
 
 // 7. Create and initialize a variable to hold how many pieces of food the snake has eaten.
 // give it a value of 1 to start.
-
+int food = 1;
 
 
 // 8. Create and initialize foodX and foodY variables to hold the location of the food.
@@ -43,9 +57,10 @@ void setup() {
 
 
   // 10. initialize your head to a new segment.
-
+Segment head = new Segment();
 
   // 11. Use the frameRate(int rate) method to set the rate to 20.
+  int rate = 20;
 }
 
 
@@ -55,19 +70,29 @@ void draw() {
 
 
   //12. Call the manageTail, drawFood, drawSnake, move, and collision methods.
+  manageTail();
+  drawFood();
+  move();
+  collision();
+  drawSnake();
 }
 
 
 // 13. Complete the drawFood method below. (Hint: each piece of food should be a 10 by 10 rectangle).
 
 void drawFood() {
+  fill(0, 255, 0);
+  Random r = new Random();
+  if(isEating){
+  rect(r.nextInt(500), r.nextInt(500), 10, 10);
 }
-
+}
 
 //14. Draw the snake head (use a 10 by 10 rectangle)
 
 void drawSnake() {
-
+fill(255, 0 ,0);
+rect(s.getY(), s.getX(), 10, 10);
 
   //test your code
 }
